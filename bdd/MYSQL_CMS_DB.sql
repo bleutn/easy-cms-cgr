@@ -1,5 +1,5 @@
 /****** Object:  Database CMS    Script Date: 17/06/2015 15:21:26 ******/
-CREATE DATABASE CMS;
+CREATE DATABASE easy-cms-bdd;
 
 USE CMS;
 /* CONTAINMENT = NONE
