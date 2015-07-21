@@ -1,7 +1,7 @@
 /****** Object:  Database CMS    Script Date: 17/06/2015 15:21:26 ******/
 CREATE DATABASE easy-cms-bdd;
 
-USE CMS;
+USE easy-cms-bdd;
 /* CONTAINMENT = NONE
  ON  PRIMARY 
 ( NAME = N'CMS', FILENAME = N'c:\Program Files\Microsoft SQL Server\MSSQL11.SQLEXPRESS\MSSQL\DATA\CMS.mdf' , SIZE = 5120KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
