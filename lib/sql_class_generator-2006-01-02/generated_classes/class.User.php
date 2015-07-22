@@ -17,15 +17,13 @@
 *
 */
 
-include_once("../../lib/sql_class_generator-2006-01-02/resources/class.database.php");
+include_once("resources/class.database.php");
 
 // **********************
 // CLASS DECLARATION
 // **********************
 
-//App::uses('User', 'Model');
-
-class User  extends AppModel
+class User
 { // class : begin
 
 

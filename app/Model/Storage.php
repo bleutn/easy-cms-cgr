@@ -17,12 +17,13 @@
 *
 */
 
-include_once("resources/class.database.php");
+include_once("../../lib/sql_class_generator-2006-01-02/resources/class.database.php");
 
 // **********************
 // CLASS DECLARATION
 // **********************
-App::uses('Storage', 'Model');
+
+//App::uses('Storage', 'Model');
 
 class Storage  extends AppModel
 { // class : begin

@@ -17,12 +17,13 @@
 *
 */
 
-include_once("resources/class.database.php");
+include_once("../../lib/sql_class_generator-2006-01-02/resources/class.database.php");
 
 // **********************
 // CLASS DECLARATION
 // **********************
-App::uses('Comment', 'Model');
+
+//App::uses('Comment', 'Model');
 
 class Comment  extends AppModel
 { // class : begin
