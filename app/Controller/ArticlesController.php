@@ -14,7 +14,6 @@ class ArticlesController extends AppController
     {
         $articles = $this->Article->find('all');
         $this->set('articles', $articles);
-        debug($articles);
     }
 
     public function view($id = null) {
@@ -23,7 +22,6 @@ class ArticlesController extends AppController
         }
 
         $article = $this->Article->findById($id);
-        debug($article);
         if (!$article) {
             throw new NotFoundException(__('Invalid article'));
         }
@@ -33,6 +31,17 @@ class ArticlesController extends AppController
     public function add() {
         if ($this->request->is('article')) {
             $this->Article->create();
+            if ($this->Article->save($this->request->data)) {
+                $this->Session->setFlash(__('Your article has been saved.'));
+                return $this->redirect(array('action' => 'index'));
+            }
+            $this->Session->setFlash(__('Unable to add your article.'));
+        }
+    }
+
+    public function remove() {
+        if ($this->request->is('article')) {
+            $this->Article->delete();
             if ($this->Article->save($this->request->data)) {
                 $this->Session->setFlash(__('Your article has been saved.'));
                 return $this->redirect(array('action' => 'index'));

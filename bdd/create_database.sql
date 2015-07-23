@@ -36,7 +36,8 @@ CREATE TABLE articles(
   pricing FLOAT(9,2) unsigned NOT NULL DEFAULT '0.00',
   short_description VARCHAR(255) NOT NULL,
   long_description TEXT NOT NULL,
-  icon VARCHAR(255) NOT NULL,
+  icon_link VARCHAR(255) NOT NULL,
+  img_link VARCHAR(255) NOT NULL,
 	created DATETIME DEFAULT NULL,
   modified DATETIME DEFAULT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;

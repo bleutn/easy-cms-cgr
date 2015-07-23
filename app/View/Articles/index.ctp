@@ -125,29 +125,31 @@
             </div>
 
             <div class="row">
-
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://placehold.it/320x150" alt="">
-                        <div class="caption">
-                            <h4><div class="pull-right">$24.99</h4>
-                            <h4><?php echo $this->Html->link($articles[0]['Article']['label'],
-                                    array('controller' => 'articles', 'action' => 'view', $articles[0]['Article']['id'])); ?>
-                            </h4>
-                            <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
-                        </div>
-                        <div class="ratings">
-                            <p class="pull-right">15 reviews</p>
-                            <p>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                            </p>
+                <?php foreach ($articles as $article): ?>
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="http://placehold.it/320x150" alt="">
+                            <?php echo $this->Html->image($article['icon_link'], $alts, $options); ?>
+                            <div class="caption">
+                                <h4><div class="pull-right"><?php echo $article["pricing"]; ?></h4>
+                                <h4><?php echo $this->Html->link($articles[0]['Article']['label'],
+                                        array('controller' => 'articles', 'action' => 'view', $articles[0]['Article']['id'])); ?>
+                                </h4>
+                                <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">15 reviews</p>
+                                <p>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php endforeach; ?>
                 <!--
                                     <div class="col-sm-4 col-lg-4 col-md-4">
                                         <h4><a href="#">Like this template?</a>
