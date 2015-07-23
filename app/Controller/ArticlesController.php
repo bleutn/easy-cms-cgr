@@ -12,17 +12,20 @@ class ArticlesController extends AppController
 
     public function index()
     {
-        $this->set('Articles', $this->Article->find('all'));
+        $articles = $this->Article->find('all');
+        $this->set('articles', $articles);
+        debug($articles);
     }
 
     public function view($id = null) {
         if (!$id) {
-            throw new NotFoundException(__('Invalid post'));
+            throw new NotFoundException(__('Invalid article'));
         }
 
-        $article = $this->article->findById($id);
+        $article = $this->Article->findById($id);
+        debug($article);
         if (!$article) {
-            throw new NotFoundException(__('Invalid post'));
+            throw new NotFoundException(__('Invalid article'));
         }
         $this->set('article', $article);
     }

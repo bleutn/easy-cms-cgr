@@ -10,7 +10,7 @@ CREATE TABLE orderstatus(
   modified DATETIME DEFAULT NULL
 );
 
-/****** Object:  Table relUserArticle    Script Date: 17/06/2015 15:21:26 ******/
+/****** Object:  Table userarticles    Script Date: 17/06/2015 15:21:26 ******/
 CREATE TABLE userarticles(
 	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	article_id INT UNSIGNED NOT NULL,
@@ -19,21 +19,43 @@ CREATE TABLE userarticles(
   modified DATETIME DEFAULT NULL
 );
 
-/****** Object:  Table tblArticle    Script Date: 17/06/2015 15:21:26 ******/
+/****** Object:  Table articles    Script Date: 17/06/2015 15:21:26 ******/
 CREATE TABLE articles(
 	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	category_id INT UNSIGNED NOT NULL,
 	price FLOAT(15,4) UNSIGNED NOT NULL,
 	label VARCHAR(100) NOT NULL,
 	description TEXT NOT NULL,
-	is_ordered TINYINT UNSIGNED NOT NULL,
-	is_sale TINYINT UNSIGNED NOT NULL,
+	is_ordered TINYINT(1) UNSIGNED NOT NULL,
+	is_sale TINYINT(1) UNSIGNED NOT NULL,
 	status_id INT UNSIGNED NOT NULL,
+	published TINYINT(1) NOT NULL DEFAULT '0',
+  rating_cache FLOAT(2,1) unsigned NOT NULL DEFAULT '3.0',
+  rating_count INT(11) unsigned NOT NULL DEFAULT '0',
+  name VARCHAR(255) NOT NULL,
+  pricing FLOAT(9,2) unsigned NOT NULL DEFAULT '0.00',
+  short_description VARCHAR(255) NOT NULL,
+  long_description TEXT NOT NULL,
+  icon VARCHAR(255) NOT NULL,
 	created DATETIME DEFAULT NULL,
   modified DATETIME DEFAULT NULL
-);
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-/****** Object:  Table tblCategory    Script Date: 17/06/2015 15:21:26 ******/
+/****** Object:  Table reviews    Script Date: 17/06/2015 15:21:26 ******/
+CREATE TABLE reviews (
+  id INT(11) NOT NULL AUTO_INCREMENT,
+  product_id INT(11) NOT NULL,
+  user_id INT(11) NOT NULL,
+  rating INT(11) NOT NULL,
+  comment TEXT NOT NULL,
+  approved TINYINT(1) unsigned NOT NULL DEFAULT '1',
+  spam TINYINT(1) unsigned NOT NULL DEFAULT '0',
+  created_at DATETIME NOT NULL,
+  updated_at DATETIME NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+/****** Object:  Table categories    Script Date: 17/06/2015 15:21:26 ******/
 CREATE TABLE categories(
 	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	label VARCHAR(100) NULL,
@@ -41,7 +63,7 @@ CREATE TABLE categories(
   modified DATETIME DEFAULT NULL
 );
 
-/****** Object:  Table tblComment    Script Date: 17/06/2015 15:21:26 ******/
+/****** Object:  Table comments    Script Date: 17/06/2015 15:21:26 ******/
 CREATE TABLE comments(
 	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	user_id INT UNSIGNED NOT NULL,
@@ -50,7 +72,7 @@ CREATE TABLE comments(
   modified DATETIME DEFAULT NULL
 );
 
-/****** Object:  Table tblLineOrder    Script Date: 17/06/2015 15:21:26 ******/
+/****** Object:  Table lineorders    Script Date: 17/06/2015 15:21:26 ******/
 CREATE TABLE lineorders(
 	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	order_id INT UNSIGNED NOT NULL,
@@ -59,7 +81,7 @@ CREATE TABLE lineorders(
   modified DATETIME DEFAULT NULL
 );
 
-/****** Object:  Table tblOrder    Script Date: 17/06/2015 15:21:26 ******/
+/****** Object:  Table orders    Script Date: 17/06/2015 15:21:26 ******/
 CREATE TABLE orders(
 	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	user_id INT UNSIGNED NOT NULL,
@@ -69,7 +91,7 @@ CREATE TABLE orders(
   modified DATETIME DEFAULT NULL
 );
 
-/****** Object:  Table tblStorage    Script Date: 17/06/2015 15:21:26 ******/
+/****** Object:  Table storages    Script Date: 17/06/2015 15:21:26 ******/
 CREATE TABLE storages(
 	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	article_id INT UNSIGNED NOT NULL,
@@ -78,7 +100,7 @@ CREATE TABLE storages(
   modified DATETIME DEFAULT NULL
 );
 
-/****** Object:  Table tblTag    Script Date: 17/06/2015 15:21:26 ******/
+/****** Object:  Table tags    Script Date: 17/06/2015 15:21:26 ******/
 CREATE TABLE tags(
 	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	label VARCHAR(50) NOT NULL,
@@ -86,9 +108,11 @@ CREATE TABLE tags(
   modified DATETIME DEFAULT NULL
 );
 
-/****** Object:  Table tblUser    Script Date: 17/06/2015 15:21:26 ******/
+/****** Object:  Table users    Script Date: 17/06/2015 15:21:26 ******/
 CREATE TABLE users(
 	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  user_type INT(10) UNSIGNED NOT NULL DEFAULT '0',
+  email VARCHAR(128) NOT NULL,
 	password VARCHAR(50) NOT NULL,
 	name VARCHAR(50) NULL,
 	surname VARCHAR(50) NULL,
