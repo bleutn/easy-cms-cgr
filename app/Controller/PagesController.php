@@ -37,6 +37,7 @@ class PagesController extends AppController {
  */
 	public $uses = array();
 
+	public $helpers = array('Html', 'Js');
 /**
  * Displays a view
  *

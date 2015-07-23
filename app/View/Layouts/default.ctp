@@ -34,6 +34,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
+	<?php echo $scripts_for_layout; ?>
+	<?php echo $this->Html->css("bootstrap.min"); ?>
+	<?php echo $this->Html->css("shop-homepage"); ?>
+	<?php echo $this->Html->script("bootstrap.min"); ?>
+	<?php echo $this->Html->script("jquery"); ?>
 </head>
 <body>
 	<div id="container">
