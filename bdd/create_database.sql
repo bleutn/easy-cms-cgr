@@ -1,7 +1,7 @@
 /****** Object:  Database CMS    Script Date: 17/06/2015 15:21:26 ******/
-CREATE DATABASE EasyCmsDB;
+CREATE DATABASE easycmsdb;
 
-USE EasyCmsDB;
+USE easycmsdb;
 
 CREATE TABLE orderstatus(
 	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -23,17 +23,16 @@ CREATE TABLE userarticles(
 CREATE TABLE articles(
 	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	category_id INT UNSIGNED NOT NULL,
-	price FLOAT(15,4) UNSIGNED NOT NULL,
 	label VARCHAR(100) NOT NULL,
 	description TEXT NOT NULL,
 	is_ordered TINYINT(1) UNSIGNED NOT NULL,
 	is_sale TINYINT(1) UNSIGNED NOT NULL,
 	status_id INT UNSIGNED NOT NULL,
 	published TINYINT(1) NOT NULL DEFAULT '0',
-  rating_cache FLOAT(2,1) unsigned NOT NULL DEFAULT '3.0',
-  rating_count INT(11) unsigned NOT NULL DEFAULT '0',
+  rating_cache FLOAT(2,1) UNSIGNED NOT NULL DEFAULT '3.0',
+  rating_count INT(11) UNSIGNED NOT NULL DEFAULT '0',
   name VARCHAR(255) NOT NULL,
-  pricing FLOAT(9,2) unsigned NOT NULL DEFAULT '0.00',
+  pricing FLOAT(9,2) UNSIGNED NOT NULL DEFAULT '0.00',
   short_description VARCHAR(255) NOT NULL,
   long_description TEXT NOT NULL,
   icon_link VARCHAR(255) NOT NULL,
@@ -49,8 +48,8 @@ CREATE TABLE reviews (
   user_id INT(11) NOT NULL,
   rating INT(11) NOT NULL,
   comment TEXT NOT NULL,
-  approved TINYINT(1) unsigned NOT NULL DEFAULT '1',
-  spam TINYINT(1) unsigned NOT NULL DEFAULT '0',
+  approved TINYINT(1) UNSIGNED NOT NULL DEFAULT '1',
+  spam TINYINT(1) UNSIGNED NOT NULL DEFAULT '0',
   created_at DATETIME NOT NULL,
   updated_at DATETIME NOT NULL,
   PRIMARY KEY (id)

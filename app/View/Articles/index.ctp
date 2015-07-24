@@ -92,9 +92,7 @@
         </div>
 
         <div class="col-md-9">
-
             <div class="row carousel-holder">
-
                 <div class="col-md-12">
                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
@@ -121,56 +119,49 @@
                         </a>
                     </div>
                 </div>
-
             </div>
-
             <div class="row">
                 <?php foreach ($articles as $article): ?>
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
-                            <?php echo $this->Html->image($article['icon_link'], $alts, $options); ?>
+                            <?php echo $this->html->image($article['Article']['icon_link']);?>
                             <div class="caption">
-                                <h4><div class="pull-right"><?php echo $article["pricing"]; ?></h4>
-                                <h4><?php echo $this->Html->link($articles[0]['Article']['label'],
-                                        array('controller' => 'articles', 'action' => 'view', $articles[0]['Article']['id'])); ?>
+                                <h4><div class="pull-right">$<?php echo $article["Article"]["pricing"];?></h4>
+                                <h4><?php echo $this->Html->link($article["Article"]['label'],
+                                        array('controller' => 'articles', 'action' => 'view', $article["Article"]['id']));?>
                                 </h4>
-                                <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
+                                <?php echo $article['Article']['long_description'];?>
                             </div>
                             <div class="ratings">
-                                <p class="pull-right">15 reviews</p>
+                                <p class="pull-right"><?= $article['Article']['rating_count'];?> reviews</p>
                                 <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
+                                    <?php for($i = 0; $i < (int)$article['Article']['rating_cache']; $i++): ?>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                    <?php endfor; ?>
+                                    <?php for($i = (int)$article['Article']['rating_cache']; $i < 5; $i++): ?>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                    <?php endfor; ?>
                                 </p>
                             </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
                 <!--
-                                    <div class="col-sm-4 col-lg-4 col-md-4">
-                                        <h4><a href="#">Like this template?</a>
-                                        </h4>
-                                        <p>If you like this template, then check out <a target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">this tutorial</a> on how to build a working review system for your online store!</p>
-                                        <a class="btn btn-primary" target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">View Tutorial</a>
-                                    </div>
+                <div class="col-sm-4 col-lg-4 col-md-4">
+                    <h4><a href="#">Like this template?</a>
+                    </h4>
+                    <p>If you like this template, then check out <a target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">this tutorial</a> on how to build a working review system for your online store!</p>
+                    <a class="btn btn-primary" target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">View Tutorial</a>
+                </div>
                 -->
             </div>
-
         </div>
-
     </div>
-
 </div>
 <!-- /.container -->
 
 <div class="container">
-
     <hr>
-
     <!-- Footer -->
     <footer>
         <div class="row">
@@ -179,9 +170,7 @@
             </div>
         </div>
     </footer>
-
 </div>
 <!-- /.container -->
 </body>
-
 </html>
